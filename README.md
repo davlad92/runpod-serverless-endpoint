@@ -72,6 +72,8 @@ You can install dependencies locally using:
 
 pip install -r requirements.txt
 
+Trigger RunPod build.
+
 Note: GPU inference will not run locally without CUDA support.
 
 Author
