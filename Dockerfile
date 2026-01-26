@@ -1,4 +1,5 @@
-FROM runpod/serverless:3.10
+# This Dockerfile is intentionally minimal — RunPod handles the rest
+FROM python:3.10-slim
 
 WORKDIR /app
 
@@ -8,3 +9,4 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 
+# Do NOT add CMD — RunPod handles serverless handler automatically
