@@ -1,4 +1,4 @@
-FROM runpod/serverless:3.10-cuda11.8
+FROM runpod/serverless:3.10
 
 WORKDIR /app
 
@@ -7,3 +7,4 @@ RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 COPY . .
+
