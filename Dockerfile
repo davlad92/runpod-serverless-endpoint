@@ -41,4 +41,8 @@ COPY handler.py /app/handler.py
 # Directorio de cache para HF
 RUN mkdir -p /cache/huggingface
 
+COPY requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
+
 CMD ["python3", "/app/handler.py"]
+
