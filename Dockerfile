@@ -8,44 +8,22 @@ ENV DEBIAN_FRONTEND=noninteractive \
     TRANSFORMERS_CACHE=/cache/huggingface \
     DIFFUSERS_CACHE=/cache/huggingface
 
-# Paquetes base
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 python3-pip python3-venv git ca-certificates \
+    git python3-pip libglib2.0-0 libsm6 libxrender1 libxext6 \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip
-RUN python3 -m pip install --upgrade pip
-
-# PyTorch (CUDA 12.1)
-RUN pip install --extra-index-url https://download.pytorch.org/whl/cu121 \
-    torch torchvision torchaudio
-
-# Dependencias RunPod + Diffusers
-RUN pip install \
-    runpod \
-    diffusers \
-    transformers \
-    accelerate \
-    safetensors \
-    pillow
-
-# (Opcional pero útil) xformers puede mejorar memoria/velocidad en algunos casos
-# Si te da problemas, comenta esta línea.
-RUN pip install xformers --no-deps || true
-
-RUN pip install --no-cache-dir "protobuf>=3.20.3,<5" sentencepiece tokenizers
-
+# Copy and install Python requirements
 WORKDIR /app
-COPY handler.py /app/handler.py
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
-# Directorio de cache para HF
+# Copy code
+COPY handler.py .
+
+# Make sure cache folder exists
 RUN mkdir -p /cache/huggingface
 
-COPY requirements.txt /app/requirements.txt
-RUN pip install -r /app/requirements.txt
-
-CMD ["python3", "/app/handler.py"]
-
-
-
-
+# Start the handler
+CMD ["python3", "handler.py"]
