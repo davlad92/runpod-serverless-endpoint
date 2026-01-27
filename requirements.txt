@@ -17,6 +17,3 @@ runpod==1.7.13
 # Utilities
 pillow==10.4.0
 protobuf>=3.20.3,<5
-
-# Optional (memory/speed boost)
-xformers==0.0.23.post1  # No-deps install, may fail but safe to try
