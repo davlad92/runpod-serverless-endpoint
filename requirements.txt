@@ -1,19 +1,10 @@
-# Core
 torch==2.1.0
-torchvision==0.16.0
-torchaudio==2.1.0
-
-# Hugging Face ecosystem
-diffusers==0.25.0
 transformers==4.36.2
+diffusers==0.25.0
 accelerate==0.24.1
 safetensors==0.4.2
 sentencepiece
 tokenizers==0.14.1
-
-# RunPod serverless support
 runpod==1.7.13
-
-# Utility
 pillow==10.1.0
 protobuf>=3.20.3,<5
