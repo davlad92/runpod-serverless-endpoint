@@ -1,19 +1,19 @@
-# Core dependencies
-torch==2.1.0         # Adjust if needed for CUDA compatibility
+# Core
+torch==2.1.0
 torchvision==0.16.0
 torchaudio==2.1.0
 
 # Hugging Face ecosystem
-transformers==4.44.2
-diffusers==0.30.3
-accelerate==0.30.0
-safetensors==0.4.4
-tokenizers==0.15.1
-sentencepiece==0.1.99
+diffusers==0.25.0
+transformers==4.36.2
+accelerate==0.24.1
+safetensors==0.4.2
+sentencepiece
+tokenizers==0.14.1
 
-# RunPod serverless
+# RunPod serverless support
 runpod==1.7.13
 
-# Utilities
-pillow==10.4.0
+# Utility
+pillow==10.1.0
 protobuf>=3.20.3,<5
